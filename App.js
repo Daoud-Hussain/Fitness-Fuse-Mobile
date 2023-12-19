@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  StyleSheet,
+  Image,
+} from 'react-native';
 
 const App = () => {
   return (
@@ -15,20 +22,85 @@ const App = () => {
         />
       </View>
 
-      {/* Second container */}
+      {/* plans container */}
       <View style={styles.plansContainer}>
-        <Text style={styles.keyStyle}>Today Work Plan</Text>
+        <Text style={styles.planHead}>Today Work Plan</Text>
         <View style={styles.plans}>
           <View style={styles.card}>
-            <Image
+            <ImageBackground
               source={require('./assets/Images/jogging.png')}
-              style={styles.planImg}
-            />
+              resizeMode='cover'
+              style={styles.planImg}>
+              <Text style={styles.plansText}>Jogging</Text>
+            </ImageBackground>
+          </View>
 
-            {/* <Image source={require('./assets/Images/jogging.PNG')} style={styles.homeImg}/> */}
+          <View style={styles.card}>
+            <ImageBackground
+              source={require('./assets/Images/pushup.png')}
+              resizeMode='cover'
+              style={styles.planImg}>
+              <Text style={styles.plansText}>Push-Up</Text>
+            </ImageBackground>
+          </View>
+
+          <View style={styles.card}>
+            <ImageBackground
+              source={require('./assets/Images/squat.png')}
+              resizeMode='cover'
+              style={styles.planImg}>
+              <Text style={styles.plansText}>Squat</Text>
+            </ImageBackground>
           </View>
         </View>
       </View>
+
+      {/* Categories container */}
+      <View style={styles.categoriesContainer}>
+        <Text style={styles.categoriesHead}>Categories</Text>
+        <View style={styles.categories}>
+          <View style={styles.categoriesCard}>
+            <ImageBackground
+              source={require('./assets/Images/gym.png')}
+              style={styles.categoriesImg}>
+              <Text style={styles.categoriesText}>Gym</Text>
+            </ImageBackground>
+          </View>
+
+          <View style={styles.categoriesCard}>
+            <ImageBackground
+              source={require('./assets/Images/yoga.png')}
+              style={styles.categoriesImg}>
+              <Text style={styles.categoriesText}>Push-Up</Text>
+            </ImageBackground>
+          </View>
+
+          <View style={styles.categoriesCard}>
+            <ImageBackground
+              source={require('./assets/Images/fitness.png')}
+              style={styles.categoriesImg}>
+              <Text style={styles.categoriesText}>Fitness</Text>
+            </ImageBackground>
+          </View>
+
+          <View style={styles.categoriesCard}>
+            <ImageBackground
+              source={require('./assets/Images/aerobics.png')}
+              style={styles.categoriesImg}>
+              <Text style={styles.categoriesText}>Aerobics</Text>
+            </ImageBackground>
+          </View>
+
+          <View style={styles.categoriesCard}>
+            <ImageBackground
+              source={require('./assets/Images/back.png')}
+              style={styles.categoriesImg}>
+              <Text style={styles.categoriesText}>Back</Text>
+            </ImageBackground>
+          </View>
+        </View>
+      </View>
+
     </View>
   );
 };
@@ -61,17 +133,57 @@ const styles = StyleSheet.create({
     marginLeft: 85,
     marginTop: 5,
   },
-  keyStyle: {
+  planHead: {
     color: '#fff',
     fontSize: 16,
     marginLeft: 5,
     paddingLeft: 20,
   },
-  planImg: {
-    borderRadius: 15,
-    margin: 20,
-    marginTop: 10,
+  plans:{
+    flexDirection: 'row'
   },
+
+  planImg: {
+    marginLeft: 20,
+    marginTop: 10,
+    width: 148,
+    height: 169,
+    borderRadius: 50,
+    
+  },
+  plansText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',  
+    paddingTop: 120
+  },
+  categories:{
+    flexDirection: 'row'
+  },
+  categoriesHead: {
+    color: '#fff',
+    fontSize: 16,
+    paddingTop: 20,
+    marginLeft: 5,
+    paddingLeft: 20,
+  },
+  categoriesImg: {
+    marginLeft: 20,
+    marginTop: 10,
+    width: 77,
+    height: 104,
+    borderRadius: 50,
+    
+  },
+  categoriesText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',  
+    paddingTop: 70
+  },
+  
 });
 
 export default App;
