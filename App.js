@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,12 @@ import {
   ImageBackground,
   StyleSheet,
   Image,
+  ScrollView,
 } from 'react-native';
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.intro}>
         <View style={styles.introText}>
           <Text style={styles.headingStyle}>Hello, Daoud</Text>
@@ -22,46 +23,48 @@ const App = () => {
         />
       </View>
 
-      {/* plans container */}
-      <View style={styles.plansContainer}>
-        <Text style={styles.planHead}>Today Work Plan</Text>
-        <View style={styles.plans}>
-          <View style={styles.card}>
-            <ImageBackground
-              source={require('./assets/Images/jogging.png')}
-              resizeMode="cover"
-              style={styles.planImg}>
-              <Text style={styles.plansText}>Jogging</Text>
-            </ImageBackground>
-          </View>
+      {/* Plans container */}
+      <Text style={styles.planHead}>Today Work Plan</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View style={styles.plansContainer}>
+          <View style={styles.plans}>
+            <View style={styles.card}>
+              <ImageBackground
+                source={require('./assets/Images/jogging.png')}
+                resizeMode="cover"
+                style={styles.planImg}>
+                <Text style={styles.plansText}>Jogging</Text>
+              </ImageBackground>
+            </View>
 
-          <View style={styles.card}>
-            <ImageBackground
-              source={require('./assets/Images/pushup.png')}
-              resizeMode="cover"
-              style={styles.planImg}>
-              <Text style={styles.plansText}>Push-Up</Text>
-            </ImageBackground>
-          </View>
+            <View style={styles.card}>
+              <ImageBackground
+                source={require('./assets/Images/pushup.png')}
+                resizeMode="cover"
+                style={styles.planImg}>
+                <Text style={styles.plansText}>Push-Up</Text>
+              </ImageBackground>
+            </View>
 
-          <View style={styles.card}>
-            <ImageBackground
-              source={require('./assets/Images/squat.png')}
-              resizeMode="cover"
-              style={styles.planImg}>
-              <Text style={styles.plansText}>Squat</Text>
-            </ImageBackground>
+            <View style={styles.card}>
+              <ImageBackground
+                source={require('./assets/Images/squat.png')}
+                resizeMode="cover"
+                style={styles.planImg}>
+                <Text style={styles.plansText}>Squat</Text>
+              </ImageBackground>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
 
       {/* Categories container */}
-      <View>
-        <View style={styles.categoriesIntros}>
+      <View style={styles.categoriesIntros}>
           <Text style={styles.categoriesHead1}>Categories</Text>
           <Text style={styles.categoriesHead2}>See All</Text>
-        </View>
+      </View>
 
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.categories}>
           <View style={styles.categoriesCard}>
             <ImageBackground
@@ -103,15 +106,15 @@ const App = () => {
             </ImageBackground>
           </View>
         </View>
+      </ScrollView>
+
+      <View style={styles.categoriesIntros}>
+          <Text style={styles.categoriesHead1}>Trainer</Text>
+          <Text style={styles.categoriesHead2}>See All</Text>
       </View>
 
       {/* Trainers Container */}
-      <View>
-        <View style={styles.categoriesIntros}>
-          <Text style={styles.categoriesHead1}>Trainers</Text>
-          <Text style={styles.categoriesHead2}>See All</Text>
-        </View>
-
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.trainersContainer}>
           <View style={styles.trainersCard}>
             <Image
@@ -148,37 +151,52 @@ const App = () => {
             />
             <Text style={styles.trainersName}>Emily</Text>
           </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Ronald.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Ronald</Text>
+          </View>
+
         </View>
+      </ScrollView>
+
+      <View style={styles.categoriesIntros}>
+          <Text style={styles.categoriesHead1}>Diet Plans</Text>
+          <Text style={styles.categoriesHead2}>See All</Text>
       </View>
 
       {/* Diet plans container */}
-      <View>
-        <View style={styles.categoriesIntros}>
-          <Text style={styles.categoriesHead1}>Diet Plans</Text>
-          <Text style={styles.categoriesHead2}>See All</Text>
-        </View>
-      </View>
+      {/* <ScrollView > */}
+        <View style={styles.dietsSection}>
+          <View style={styles.dietsCard}>
+            <ImageBackground
+              source={require('./assets/Images/Oatmeal.png')}
+              style={styles.dietsImg}>
+              <Text style={styles.dietsText}>Oatmeal</Text>
+            </ImageBackground>
+          </View>
 
-      <View style={styles.dietsSection}>
-        <View style={styles.dietsCard}>
-          <ImageBackground
-            source={require('./assets/Images/Oatmeal.png')}
-            style={styles.dietsImg}>
-            <Text style={styles.dietsText}>Oatmeal</Text>
-          </ImageBackground>
-        </View>
+          <View style={styles.dietsCard}>
+            <ImageBackground
+              source={require('./assets/Images/Waffles.png')}
+              style={styles.dietsImg}>
+              <Text style={styles.dietsText}>Waffles</Text>
+            </ImageBackground>
+          </View>
 
-        <View style={styles.dietsCard}>
-          <ImageBackground
-            source={require('./assets/Images/Waffles.png')}
-            style={styles.dietsImg}>
-            <Text style={styles.dietsText}>Waffles</Text>
-          </ImageBackground>
+          <View style={styles.dietsCard}>
+            <ImageBackground
+              source={require('./assets/Images/Waffles.png')}
+              style={styles.dietsImg}>
+              <Text style={styles.dietsText}>Waffles</Text>
+            </ImageBackground>
+          </View>
         </View>
-      </View>
+      {/* </ScrollView> */}
 
-      <View></View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -209,6 +227,11 @@ const styles = StyleSheet.create({
     marginLeft: 85,
     marginTop: 5,
   },
+  plansContainer: {
+    // height: 450,
+    // backgroundColor: 'blue'
+
+  },
   planHead: {
     color: '#fff',
     fontSize: 16,
@@ -217,6 +240,7 @@ const styles = StyleSheet.create({
   },
   plans: {
     flexDirection: 'row',
+    marginRight: 15
   },
 
   planImg: {
@@ -236,23 +260,29 @@ const styles = StyleSheet.create({
   categoriesIntros: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 10,
+    paddingTop: 5
   },
 
   categories: {
     flexDirection: 'row',
+    // height: 280,
+    // backgroundColor: 'green'
+
+
   },
 
   categoriesHead1: {
     color: '#fff',
     fontSize: 16,
-    paddingTop: 30,
+    paddingTop: 10,
     marginLeft: 8,
     paddingLeft: 15,
   },
   categoriesHead2: {
     color: '#fff',
     fontSize: 16,
-    paddingTop: 30,
+    paddingTop: 10,
     marginRight: 8,
     paddingRight: 15
   },
@@ -275,6 +305,9 @@ const styles = StyleSheet.create({
   trainersContainer: {
     flexDirection: 'row',
     paddingTop: 10,
+    // backgroundColor: 'red',
+    // height: 240
+
   },
   trainersCard: {
     paddingTop: 5,
@@ -308,10 +341,10 @@ const styles = StyleSheet.create({
   },
   dietsText: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 70,
+    paddingTop: 170,
   },
 });
 
