@@ -104,43 +104,80 @@ const App = () => {
           </View>
         </View>
       </View>
-      
+
       {/* Trainers Container */}
       <View>
-      <View style={styles.categoriesIntros}>
+        <View style={styles.categoriesIntros}>
           <Text style={styles.categoriesHead1}>Trainers</Text>
           <Text style={styles.categoriesHead2}>See All</Text>
         </View>
 
         <View style={styles.trainersContainer}>
-            <View style={styles.trainersCard}>
-              <Image source={require('./assets/Images/Richard.png')} style={styles.trainersImg} />
-              <Text style={styles.trainersName} >Richard</Text>
-
-            </View>
-            <View style={styles.trainersCard}>
-              <Image source={require('./assets/Images/Jennifier.png')} style={styles.trainersImg} />
-              <Text style={styles.trainersName} >Jennifier</Text>
-
-            </View>
-            <View style={styles.trainersCard}>
-              <Image source={require('./assets/Images/Brian.png')} style={styles.trainersImg} />
-              <Text style={styles.trainersName} >Brian</Text>
-
-            </View>
-            <View style={styles.trainersCard}>
-              <Image source={require('./assets/Images/Rebacca.png')} style={styles.trainersImg} />
-              <Text style={styles.trainersName} >Rebacca</Text>
-
-            </View>
-            <View style={styles.trainersCard}>
-              <Image source={require('./assets/Images/Emily.png')} style={styles.trainersImg} />
-              <Text style={styles.trainersName} >Emily</Text>
-
-            </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Richard.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Richard</Text>
+          </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Jennifier.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Jennifier</Text>
+          </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Brian.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Brian</Text>
+          </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Rebacca.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Rebacca</Text>
+          </View>
+          <View style={styles.trainersCard}>
+            <Image
+              source={require('./assets/Images/Emily.png')}
+              style={styles.trainersImg}
+            />
+            <Text style={styles.trainersName}>Emily</Text>
+          </View>
         </View>
-        
       </View>
+
+      {/* Diet plans container */}
+      <View>
+        <View style={styles.categoriesIntros}>
+          <Text style={styles.categoriesHead1}>Diet Plans</Text>
+          <Text style={styles.categoriesHead2}>See All</Text>
+        </View>
+      </View>
+
+      <View style={styles.dietsSection}>
+        <View style={styles.dietsCard}>
+          <ImageBackground
+            source={require('./assets/Images/Oatmeal.png')}
+            style={styles.dietsImg}>
+            <Text style={styles.dietsText}>Oatmeal</Text>
+          </ImageBackground>
+        </View>
+
+        <View style={styles.dietsCard}>
+          <ImageBackground
+            source={require('./assets/Images/Waffles.png')}
+            style={styles.dietsImg}>
+            <Text style={styles.dietsText}>Waffles</Text>
+          </ImageBackground>
+        </View>
+      </View>
+
+      <View></View>
     </View>
   );
 };
@@ -209,14 +246,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     paddingTop: 30,
-    marginLeft: 5,
-    paddingLeft: 20,
+    marginLeft: 8,
+    paddingLeft: 15,
   },
   categoriesHead2: {
     color: '#fff',
     fontSize: 16,
     paddingTop: 30,
-    marginRight: 15,
+    marginRight: 8,
+    paddingRight: 15
   },
 
   categoriesImg: {
@@ -237,28 +275,44 @@ const styles = StyleSheet.create({
   trainersContainer: {
     flexDirection: 'row',
     paddingTop: 10,
-
   },
   trainersCard: {
-    paddingTop: 5
-
+    paddingTop: 5,
   },
   trainersImg: {
     marginLeft: 23,
     width: 55,
     height: 55,
-
   },
 
   trainersName: {
     color: '#fff',
     fontSize: 11,
-    paddingTop: 5,
-    paddingLeft: 5,
-    marginLeft: 30,
+    paddingTop: 8,
+    textAlign: 'center',
+    marginLeft: 23,
+  },
 
-
-  }
+  dietsSection: {
+    flexDirection: 'row'
+  },
+  dietsCard: {
+    marginLeft: 20,
+    marginTop: 10,
+    marginRight:20
+    },
+  dietsImg: {
+    width: 156,
+    height: 211,
+    borderRadius: 50,
+  },
+  dietsText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 70,
+  },
 });
 
 export default App;
