@@ -29,7 +29,7 @@ const App = () => {
           <View style={styles.card}>
             <ImageBackground
               source={require('./assets/Images/jogging.png')}
-              resizeMode='cover'
+              resizeMode="cover"
               style={styles.planImg}>
               <Text style={styles.plansText}>Jogging</Text>
             </ImageBackground>
@@ -38,7 +38,7 @@ const App = () => {
           <View style={styles.card}>
             <ImageBackground
               source={require('./assets/Images/pushup.png')}
-              resizeMode='cover'
+              resizeMode="cover"
               style={styles.planImg}>
               <Text style={styles.plansText}>Push-Up</Text>
             </ImageBackground>
@@ -47,7 +47,7 @@ const App = () => {
           <View style={styles.card}>
             <ImageBackground
               source={require('./assets/Images/squat.png')}
-              resizeMode='cover'
+              resizeMode="cover"
               style={styles.planImg}>
               <Text style={styles.plansText}>Squat</Text>
             </ImageBackground>
@@ -56,8 +56,12 @@ const App = () => {
       </View>
 
       {/* Categories container */}
-      <View style={styles.categoriesContainer}>
-        <Text style={styles.categoriesHead}>Categories</Text>
+      <View>
+        <View style={styles.categoriesIntros}>
+          <Text style={styles.categoriesHead1}>Categories</Text>
+          <Text style={styles.categoriesHead2}>See All</Text>
+        </View>
+
         <View style={styles.categories}>
           <View style={styles.categoriesCard}>
             <ImageBackground
@@ -100,7 +104,43 @@ const App = () => {
           </View>
         </View>
       </View>
+      
+      {/* Trainers Container */}
+      <View>
+      <View style={styles.categoriesIntros}>
+          <Text style={styles.categoriesHead1}>Trainers</Text>
+          <Text style={styles.categoriesHead2}>See All</Text>
+        </View>
 
+        <View style={styles.trainersContainer}>
+            <View style={styles.trainersCard}>
+              <Image source={require('./assets/Images/Richard.png')} style={styles.trainersImg} />
+              <Text style={styles.trainersName} >Richard</Text>
+
+            </View>
+            <View style={styles.trainersCard}>
+              <Image source={require('./assets/Images/Jennifier.png')} style={styles.trainersImg} />
+              <Text style={styles.trainersName} >Jennifier</Text>
+
+            </View>
+            <View style={styles.trainersCard}>
+              <Image source={require('./assets/Images/Brian.png')} style={styles.trainersImg} />
+              <Text style={styles.trainersName} >Brian</Text>
+
+            </View>
+            <View style={styles.trainersCard}>
+              <Image source={require('./assets/Images/Rebacca.png')} style={styles.trainersImg} />
+              <Text style={styles.trainersName} >Rebacca</Text>
+
+            </View>
+            <View style={styles.trainersCard}>
+              <Image source={require('./assets/Images/Emily.png')} style={styles.trainersImg} />
+              <Text style={styles.trainersName} >Emily</Text>
+
+            </View>
+        </View>
+        
+      </View>
     </View>
   );
 };
@@ -117,7 +157,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginVertical: 10,
   },
-  introText: {},
   headingStyle: {
     color: '#fff',
     fontSize: 16,
@@ -139,8 +178,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     paddingLeft: 20,
   },
-  plans:{
-    flexDirection: 'row'
+  plans: {
+    flexDirection: 'row',
   },
 
   planImg: {
@@ -149,41 +188,77 @@ const styles = StyleSheet.create({
     width: 148,
     height: 169,
     borderRadius: 50,
-    
   },
   plansText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',  
-    paddingTop: 120
+    textAlign: 'center',
+    paddingTop: 120,
   },
-  categories:{
-    flexDirection: 'row'
+  categoriesIntros: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  categoriesHead: {
+
+  categories: {
+    flexDirection: 'row',
+  },
+
+  categoriesHead1: {
     color: '#fff',
     fontSize: 16,
-    paddingTop: 20,
+    paddingTop: 30,
     marginLeft: 5,
     paddingLeft: 20,
   },
+  categoriesHead2: {
+    color: '#fff',
+    fontSize: 16,
+    paddingTop: 30,
+    marginRight: 15,
+  },
+
   categoriesImg: {
     marginLeft: 20,
     marginTop: 10,
     width: 77,
     height: 104,
     borderRadius: 50,
-    
   },
   categoriesText: {
     color: '#fff',
     fontSize: 14,
     fontWeight: 'bold',
-    textAlign: 'center',  
-    paddingTop: 70
+    textAlign: 'center',
+    paddingTop: 70,
   },
-  
+
+  trainersContainer: {
+    flexDirection: 'row',
+    paddingTop: 10,
+
+  },
+  trainersCard: {
+    paddingTop: 5
+
+  },
+  trainersImg: {
+    marginLeft: 23,
+    width: 55,
+    height: 55,
+
+  },
+
+  trainersName: {
+    color: '#fff',
+    fontSize: 11,
+    paddingTop: 5,
+    paddingLeft: 5,
+    marginLeft: 30,
+
+
+  }
 });
 
 export default App;
