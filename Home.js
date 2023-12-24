@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-const App = () => {
+const Home = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.intro}>
@@ -24,7 +24,7 @@ const App = () => {
       </View>
 
       {/* Plans container */}
-      <Text style={styles.planHead}>Today Work Plan</Text>
+      <Text style={styles.planHead}>Warmup Exercises</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.plansContainer}>
           <View style={styles.plans}>
@@ -48,20 +48,31 @@ const App = () => {
 
             <View style={styles.card}>
               <ImageBackground
-                source={require('./assets/Images/squat.png')}
+                source={require('./assets/Images/cycling.png')}
                 resizeMode="cover"
                 style={styles.planImg}>
-                <Text style={styles.plansText}>Squat</Text>
+                <Text style={styles.plansText}>Cycling</Text>
               </ImageBackground>
             </View>
+
+            <View style={styles.card}>
+              <ImageBackground
+                source={require('./assets/Images/battle-rope.png')}
+                resizeMode="cover"
+                style={styles.planImg}>
+                <Text style={styles.plansText}>Battle Roap</Text>
+              </ImageBackground>
+            </View>
+
+            
           </View>
         </View>
       </ScrollView>
 
       {/* Categories container */}
-      <View style={styles.categoriesIntros}>
-          <Text style={styles.categoriesHead1}>Categories</Text>
-          <Text style={styles.categoriesHead2}>See All</Text>
+      <View style={styles.intros}>
+          <Text style={styles.heading1}>Categories</Text>
+          <Text style={styles.heading2}>See All</Text>
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -108,9 +119,9 @@ const App = () => {
         </View>
       </ScrollView>
 
-      <View style={styles.categoriesIntros}>
-          <Text style={styles.categoriesHead1}>Trainer</Text>
-          <Text style={styles.categoriesHead2}>See All</Text>
+      <View style={styles.intros}>
+          <Text style={styles.heading1}>Trainer</Text>
+          <Text style={styles.heading2}>See All</Text>
       </View>
 
       {/* Trainers Container */}
@@ -162,13 +173,12 @@ const App = () => {
         </View>
       </ScrollView>
 
-      <View style={styles.categoriesIntros}>
-          <Text style={styles.categoriesHead1}>Diet Plans</Text>
-          <Text style={styles.categoriesHead2}>See All</Text>
+      <View style={styles.intros}>
+          <Text style={styles.heading1}>Diet Plans</Text>
+          <Text style={styles.heading2}>See All</Text>
       </View>
 
       {/* Diet plans container */}
-      {/* <ScrollView > */}
         <View style={styles.dietsSection}>
           <View style={styles.dietsCard}>
             <ImageBackground
@@ -185,16 +195,25 @@ const App = () => {
               <Text style={styles.dietsText}>Waffles</Text>
             </ImageBackground>
           </View>
+        </View>
+
+        <View style={styles.dietsSection}>
+          <View style={styles.dietsCard}>
+            <ImageBackground
+              source={require('./assets/Images/Cornflakes.png')}
+              style={styles.dietsImg}>
+              <Text style={styles.dietsText}>Cornflakes</Text>
+            </ImageBackground>
+          </View>
 
           <View style={styles.dietsCard}>
             <ImageBackground
-              source={require('./assets/Images/Waffles.png')}
+              source={require('./assets/Images/Fruits-Salad.png')}
               style={styles.dietsImg}>
-              <Text style={styles.dietsText}>Waffles</Text>
+              <Text style={styles.dietsText}>Fruits Salad</Text>
             </ImageBackground>
           </View>
         </View>
-      {/* </ScrollView> */}
 
     </ScrollView>
   );
@@ -227,11 +246,7 @@ const styles = StyleSheet.create({
     marginLeft: 85,
     marginTop: 5,
   },
-  plansContainer: {
-    // height: 450,
-    // backgroundColor: 'blue'
 
-  },
   planHead: {
     color: '#fff',
     fontSize: 16,
@@ -240,7 +255,9 @@ const styles = StyleSheet.create({
   },
   plans: {
     flexDirection: 'row',
-    marginRight: 15
+    marginRight: 15,
+    borderRadius: 50,
+
   },
 
   planImg: {
@@ -257,7 +274,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 120,
   },
-  categoriesIntros: {
+  intros: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
@@ -266,20 +283,17 @@ const styles = StyleSheet.create({
 
   categories: {
     flexDirection: 'row',
-    // height: 280,
-    // backgroundColor: 'green'
-
-
+    marginRight: 15
   },
 
-  categoriesHead1: {
+  heading1: {
     color: '#fff',
     fontSize: 16,
     paddingTop: 10,
     marginLeft: 8,
     paddingLeft: 15,
   },
-  categoriesHead2: {
+  heading2: {
     color: '#fff',
     fontSize: 16,
     paddingTop: 10,
@@ -305,9 +319,7 @@ const styles = StyleSheet.create({
   trainersContainer: {
     flexDirection: 'row',
     paddingTop: 10,
-    // backgroundColor: 'red',
-    // height: 240
-
+    marginRight: 15
   },
   trainersCard: {
     paddingTop: 5,
@@ -327,16 +339,17 @@ const styles = StyleSheet.create({
   },
 
   dietsSection: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 5
   },
   dietsCard: {
     marginLeft: 20,
-    marginTop: 10,
-    marginRight:20
-    },
+    marginTop: 15,
+  },
+
   dietsImg: {
-    width: 156,
-    height: 211,
+    width: 170,
+    height: 225,
     borderRadius: 50,
   },
   dietsText: {
@@ -348,4 +361,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Home;
