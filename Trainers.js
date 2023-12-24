@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  Touchable,
 } from 'react-native';
 
 const Trainers = () => {
@@ -14,18 +15,18 @@ const Trainers = () => {
     <ScrollView style={styles.container}>
       <View style={styles.intro}>
         <View style={styles.introText}>
-          <View style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton}>
             <Image
               source={require('./assets/Images/back-button.png')}
               style={styles.backButtonStyle}
             />
-          </View>
+          </TouchableOpacity>
           <Text style={styles.textStyle}>Fitness Trainers</Text>
         </View>
       </View>
 
       {/* Trainer's card */}
-      <View style={styles.trainerCard}>
+      <TouchableOpacity style={styles.trainerCard}>
         <Image
           source={require('./assets/Images/Richard.png')}
           style={styles.trainersImg}
@@ -34,7 +35,7 @@ const Trainers = () => {
           <View style={styles.trainersInfo}>
             <Text style={styles.trainerName}>Richard Will</Text>
             <View style={styles.review}>
-              <Text style={styles.reviewScore}> 4.5 </Text>
+              <Text style={styles.reviewScore}> 4.8</Text>
             </View>
           </View>
 
@@ -45,7 +46,134 @@ const Trainers = () => {
           source={require('./assets/Images/forward-button.png')}
           style={styles.forwardButtonStyle}
         />
-      </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Jennifier.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Jennifier James</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.6 </Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>Functional Strength</Text>
+          <Text style={styles.trainerExperience}>4 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Brian.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Brian Edwards</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.9</Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>Strength Training</Text>
+          <Text style={styles.trainerExperience}>6 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Emily.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Emily Kevin</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.2</Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>High intensity Training</Text>
+          <Text style={styles.trainerExperience}>2 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Rebacca.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Rebacca Smith</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.8</Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>Functional Strength</Text>
+          <Text style={styles.trainerExperience}>5 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Ronald.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Ronald Jason</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.5 </Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>High intensity Training</Text>
+          <Text style={styles.trainerExperience}>6 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.trainerCard}>
+        <Image
+          source={require('./assets/Images/Nick.png')}
+          style={styles.trainersImg}
+        />
+        <View style={styles.trainersIntro}>
+          <View style={styles.trainersInfo}>
+            <Text style={styles.trainerName}>Nick Germaine</Text>
+            <View style={styles.review}>
+              <Text style={styles.reviewScore}> 4.3</Text>
+            </View>
+          </View>
+
+          <Text style={styles.trainerDescription}>Wait loss Training</Text>
+          <Text style={styles.trainerExperience}>5 years Experience</Text>
+        </View>
+        <Image
+          source={require('./assets/Images/forward-button.png')}
+          style={styles.forwardButtonStyle}
+        />
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -102,6 +230,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 15,
+    marginBottom: 15,
   },
   trainersIntro: {
     paddingLeft: 15,
@@ -113,12 +242,12 @@ const styles = StyleSheet.create({
   },
   review: {
     backgroundColor: '#9B0808',
-    width: 33,
-    height: 16,
+    width: 37,
+    height: 18,
     textAlign: 'center',
     color: 'white',
     marginLeft: 10,
-    marginTop: 5
+    marginTop: 3,
   },
   reviewScore: {
     color: '#fff',
@@ -126,6 +255,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
+  trainersImg: {
+    width: 64,
+    height: 64,
+  },
+
   trainerName: {
     fontSize: 18,
     fontWeight: '500',
@@ -133,14 +267,14 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
   },
   trainerDescription: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '500',
     color: '#fff',
   },
   trainerExperience: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '500',
-    paddingTop: 7,
+    paddingTop: 6,
     color: '#fff',
   },
 });
