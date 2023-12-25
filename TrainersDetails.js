@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  StatusBar,
   Touchable,
 } from 'react-native';
 
