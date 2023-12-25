@@ -10,7 +10,7 @@ import {
   Touchable,
 } from 'react-native';
 
-const Trainers = () => {
+const TrainersDetails = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.intro}>
@@ -279,4 +279,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Trainers;
+export default TrainersDetails;
