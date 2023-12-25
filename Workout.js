@@ -52,12 +52,64 @@ const Workout = () => {
       </View>
 
       <View style={{marginTop: 10}}>
-        <Text style={{color: '#fff', fontSize: 12, marginLeft: 15}}>
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 12,
+            marginLeft: 15,
+            marginBottom: 15,
+          }}>
           NEXT EXERCISE
         </Text>
       </View>
 
+      <View style={styles.number}>
+        <Text style={styles.numberText}> 1 </Text>
+      </View>
+      <View>
+        <View style={styles.exercise}>
+          <View style={styles.verticalLine} />
+          <View style={styles.exerciseCard}>
+            <Text style={styles.exerciseHead}>Incline dumble flyes</Text>
+            <Text style={styles.exerciseText}>
+              It works your upper and outer pecs to build a broader chest.
+            </Text>
+          </View>
+        </View>
+      </View>
 
+      <View style={styles.number}>
+        <Text style={styles.numberText}> 2 </Text>
+      </View>
+      <View>
+        <View style={styles.exercise}>
+          <View style={styles.verticalLine} />
+          <View style={styles.exerciseCard}>
+            <Text style={styles.exerciseHead}>
+              Cable rope overhead extension
+            </Text>
+            <Text style={styles.exerciseText}>
+              This move works your triceps through a full range of motion, and
+              the cable forces your muscles to work hard.
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.number}>
+        <Text style={styles.numberText}> 3 </Text>
+      </View>
+      <View>
+        <View style={styles.exercise}>
+          <View style={styles.verticalLine} />
+          <View style={styles.exerciseCard}>
+            <Text style={styles.exerciseHead}>Incline dumble flyes</Text>
+            <Text style={styles.exerciseText}>
+              It works your upper and outer pecs to build a broader chest.
+            </Text>
+          </View>
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -136,7 +188,7 @@ const styles = StyleSheet.create({
     paddingTop: '27%',
     color: '#fff',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   workoutText2: {
     backgroundColor: '#9B0808',
@@ -145,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     textAlign: 'center',
     borderRadius: 50,
-    marginVertical: 3
+    marginVertical: 3,
   },
   workoutText: {
     color: '#fff',
@@ -157,7 +209,54 @@ const styles = StyleSheet.create({
     color: '#fff',
     paddingLeft: 20,
     fontSize: 14,
-  }
+  },
+  number: {
+    backgroundColor: '#9B0808',
+    width: 25,
+    height: 25,
+    borderRadius: 50,
+    marginLeft: 15,
+  },
+  numberText: {
+    color: '#fff',
+    textAlign: 'center',
+    paddingTop: 2,
+  },
+  exercise: {
+    flexDirection: 'row',
+    width: '85%',
+    height: 90,
+    marginLeft: 25,
+    marginTop: 10,
+    marginBottom: 15,
+  },
+  exerciseCard: {
+    flexDirection: 'column',
+    backgroundColor: '#3A3A3C',
+    width: '90%',
+    marginLeft: 15,
+    paddingLeft: 15,
+    paddingTop: 10,
+    marginBottom: 5,
+    borderWidth: 0.2,
+    borderRadius: 5,
+    borderColor: '#fff',
+  },
+  exerciseHead: {
+    color: 'white',
+    fontSize: 15,
+  },
+  exerciseText: {
+    color: 'white',
+    fontSize: 13,
+  },
+  verticalLine: {
+    borderLeftColor: '#fff',
+    borderLeftWidth: 1,
+    // marginTop: 25,
+    // height: 80,
+    // marginLeft: 5
+  },
 });
 
 export default Workout;
