@@ -39,7 +39,10 @@ const TrainersDetails = () => {
         </View>
 
         {/* Reviews container */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{marginHorizontal: 15}}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{marginHorizontal: 15}}>
           <View style={styles.reviewsCard}>
             <View style={styles.reviewerDetails}>
               <Image source={require('./assets/Images/sharom.png')} />
@@ -49,10 +52,11 @@ const TrainersDetails = () => {
               </View>
             </View>
             <View>
-                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
-                Had such an amazing session with Jenni. She instantly picked up on the level
-                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
-                </Text>
+              <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up
+                on the level of my fitness and adjusted the workout to suit me
+                whilst also pushing me to my limits.
+              </Text>
             </View>
           </View>
           <View style={styles.reviewsCard}>
@@ -64,10 +68,11 @@ const TrainersDetails = () => {
               </View>
             </View>
             <View>
-                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
-                Had such an amazing session with Jenni. She instantly picked up on the level
-                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
-                </Text>
+              <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up
+                on the level of my fitness and adjusted the workout to suit me
+                whilst also pushing me to my limits.
+              </Text>
             </View>
           </View>
           <View style={styles.reviewsCard}>
@@ -79,13 +84,19 @@ const TrainersDetails = () => {
               </View>
             </View>
             <View>
-                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
-                Had such an amazing session with Jenni. She instantly picked up on the level
-                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
-                </Text>
+              <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up
+                on the level of my fitness and adjusted the workout to suit me
+                whilst also pushing me to my limits.
+              </Text>
             </View>
           </View>
         </ScrollView>
+
+        <TouchableOpacity style={styles.bookButton}>
+            <Text style={styles.buttonText}>Book an Appointment</Text>
+        </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -99,7 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   intro: {
-    minHeight: '85%',
+    // minHeight: '85%',
     marginBottom: 10,
   },
   introText: {
@@ -146,7 +157,7 @@ const styles = StyleSheet.create({
   intros: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
+    marginTop: 18,
     paddingTop: 5,
   },
 
@@ -173,13 +184,11 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 20,
     backgroundColor: '#3A3A3C',
-    // marginHorizontal: '8%',
     borderRadius: 15,
-    // marginRight: 20
   },
   reviewerDetails: {
     flexDirection: 'row',
-    paddingLeft: 5
+    paddingLeft: 5,
   },
   reviewerName: {
     textAlign: 'center',
@@ -200,6 +209,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 25,
     marginTop: 3,
+    paddingRight: 2,
   },
   reviewScore: {
     color: '#fff',
@@ -207,6 +217,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
+  bookButton: {
+    backgroundColor: '#9B0808',
+    color: 'white',
+    width: 274,
+    height: 61,
+    borderRadius: 15,
+    alignSelf :'center',
+    marginTop: 27
+  },
+  buttonText: {
+    color: '#fff', 
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+    paddingTop: 18
+  }
 });
 
 export default TrainersDetails;
