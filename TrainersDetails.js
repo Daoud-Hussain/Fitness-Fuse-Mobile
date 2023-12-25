@@ -33,11 +33,59 @@ const TrainersDetails = () => {
             <Text style={styles.desc}>Active Clients</Text>
           </View>
         </View>
-      </View>
+        <View style={styles.intros}>
+          <Text style={styles.heading1}>Reviews</Text>
+          <Text style={styles.heading2}>4.6 / 5.0</Text>
+        </View>
 
-      <View style={styles.intros}>
-        <Text style={styles.heading1}>Reviews</Text>
-        <Text style={styles.heading2}>See All</Text>
+        {/* Reviews container */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{marginHorizontal: 15}}>
+          <View style={styles.reviewsCard}>
+            <View style={styles.reviewerDetails}>
+              <Image source={require('./assets/Images/sharom.png')} />
+              <Text style={styles.reviewerName}>Sharom Jem</Text>
+              <View style={styles.review}>
+                <Text style={styles.reviewScore}> 4.9</Text>
+              </View>
+            </View>
+            <View>
+                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up on the level
+                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
+                </Text>
+            </View>
+          </View>
+          <View style={styles.reviewsCard}>
+            <View style={styles.reviewerDetails}>
+              <Image source={require('./assets/Images/sharom.png')} />
+              <Text style={styles.reviewerName}>Sharom Jem</Text>
+              <View style={styles.review}>
+                <Text style={styles.reviewScore}> 4.9</Text>
+              </View>
+            </View>
+            <View>
+                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up on the level
+                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
+                </Text>
+            </View>
+          </View>
+          <View style={styles.reviewsCard}>
+            <View style={styles.reviewerDetails}>
+              <Image source={require('./assets/Images/sharom.png')} />
+              <Text style={styles.reviewerName}>Sharom Jem</Text>
+              <View style={styles.review}>
+                <Text style={styles.reviewScore}> 4.9</Text>
+              </View>
+            </View>
+            <View>
+                <Text style={{color: 'white', paddingTop: 13, fontSize: 13}}>
+                Had such an amazing session with Jenni. She instantly picked up on the level
+                 of my fitness and adjusted the workout to suit me whilst also pushing me to my limits.
+                </Text>
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -101,20 +149,63 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 5,
   },
-  
+
   heading1: {
     color: '#fff',
     fontSize: 16,
     paddingTop: 10,
-    marginLeft: 8,
-    paddingLeft: 15,
+    marginLeft: 10,
+    paddingLeft: 20,
   },
   heading2: {
     color: '#fff',
+    fontWeight: '400',
     fontSize: 16,
     paddingTop: 10,
     marginRight: 8,
     paddingRight: 15,
+  },
+  reviewsCard: {
+    width: 320,
+    height: 145,
+    marginHorizontal: 10,
+    paddingLeft: 20,
+    padding: 15,
+    marginTop: 20,
+    backgroundColor: '#3A3A3C',
+    // marginHorizontal: '8%',
+    borderRadius: 15,
+    // marginRight: 20
+  },
+  reviewerDetails: {
+    flexDirection: 'row',
+    paddingLeft: 5
+  },
+  reviewerName: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: '500',
+    color: 'white',
+    paddingBottom: 4,
+    paddingLeft: 15,
+    paddingVertical: 5,
+    paddingRight: 70,
+  },
+  review: {
+    backgroundColor: '#9B0808',
+    width: 40,
+    paddingTop: 2,
+    height: 22,
+    textAlign: 'center',
+    color: 'white',
+    marginLeft: 25,
+    marginTop: 3,
+  },
+  reviewScore: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 12,
   },
 });
 
