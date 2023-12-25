@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -12,208 +12,51 @@ import {
 const Workout = () => {
   return (
     <ScrollView style={styles.container}>
+      <Image
+        source={require('./assets/Images/profile.jpg')}
+        style={styles.homeImg}
+      />
       <View style={styles.intro}>
         <View style={styles.introText}>
-          <Text style={styles.headingStyle}>Hello, Daoud</Text>
-          <Text style={styles.textStyle}>Let's start your day</Text>
+          <Text style={styles.headingStyle}>Welcome, Daoud</Text>
+          <Text style={styles.textStyle}>
+            Empower yourself to make the changes you need to make.
+          </Text>
         </View>
-        <Image
-          source={require('./assets/Images/profile.jpg')}
-          style={styles.homeImg}
-        />
+
+        <View style={styles.daySection}>
+          <View style={styles.day}>
+            <Text style={styles.dayText}> Sat</Text>
+          </View>
+          <Text style={styles.textSection}>Time to workout</Text>
+        </View>
       </View>
 
-      {/* Plans container */}
-      <Text style={styles.planHead}>Warmup Exercises</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.plansContainer}>
-          <View style={styles.plans}>
-            <View style={styles.card}>
-              <ImageBackground
-                source={require('./assets/Images/jogging.png')}
-                resizeMode="cover"
-                style={styles.planImg}>
-                <Text style={styles.plansText}>Jogging</Text>
-              </ImageBackground>
-            </View>
-
-            <View style={styles.card}>
-              <ImageBackground
-                source={require('./assets/Images/pushup.png')}
-                resizeMode="cover"
-                style={styles.planImg}>
-                <Text style={styles.plansText}>Push-Up</Text>
-              </ImageBackground>
-            </View>
-
-            <View style={styles.card}>
-              <ImageBackground
-                source={require('./assets/Images/cycling.png')}
-                resizeMode="cover"
-                style={styles.planImg}>
-                <Text style={styles.plansText}>Cycling</Text>
-              </ImageBackground>
-            </View>
-
-            <View style={styles.card}>
-              <ImageBackground
-                source={require('./assets/Images/battle-rope.png')}
-                resizeMode="cover"
-                style={styles.planImg}>
-                <Text style={styles.plansText}>Battle Roap</Text>
-              </ImageBackground>
-            </View>
-
-            
-          </View>
-        </View>
-      </ScrollView>
-
-      {/* Categories container */}
-      <View style={styles.intros}>
-          <Text style={styles.heading1}>Categories</Text>
-          <Text style={styles.heading2}>See All</Text>
+      <View style={{marginTop: 10}}>
+        <Text style={{color: '#fff', fontSize: 12, marginLeft: 15}}>
+          GUIDED TRAINING
+        </Text>
+        <View style={styles.horizontalLine} />
       </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.categories}>
-          <View style={styles.categoriesCard}>
-            <ImageBackground
-              source={require('./assets/Images/gym.png')}
-              style={styles.categoriesImg}>
-              <Text style={styles.categoriesText}>Gym</Text>
-            </ImageBackground>
+      <View>
+        <ImageBackground
+          source={require('./assets/Images/Chest-Exercise.png')}
+          style={styles.workoutImg}>
+          <Text style={styles.workoutText1}>CHEST & ARMS</Text>
+          <View style={styles.workoutText2}>
+            <Text style={styles.workoutText}> Recommended</Text>
           </View>
-
-          <View style={styles.categoriesCard}>
-            <ImageBackground
-              source={require('./assets/Images/yoga.png')}
-              style={styles.categoriesImg}>
-              <Text style={styles.categoriesText}>Push-Up</Text>
-            </ImageBackground>
-          </View>
-
-          <View style={styles.categoriesCard}>
-            <ImageBackground
-              source={require('./assets/Images/fitness.png')}
-              style={styles.categoriesImg}>
-              <Text style={styles.categoriesText}>Fitness</Text>
-            </ImageBackground>
-          </View>
-
-          <View style={styles.categoriesCard}>
-            <ImageBackground
-              source={require('./assets/Images/aerobics.png')}
-              style={styles.categoriesImg}>
-              <Text style={styles.categoriesText}>Aerobics</Text>
-            </ImageBackground>
-          </View>
-
-          <View style={styles.categoriesCard}>
-            <ImageBackground
-              source={require('./assets/Images/back.png')}
-              style={styles.categoriesImg}>
-              <Text style={styles.categoriesText}>Back</Text>
-            </ImageBackground>
-          </View>
-        </View>
-      </ScrollView>
-
-      <View style={styles.intros}>
-          <Text style={styles.heading1}>Trainer</Text>
-          <Text style={styles.heading2}>See All</Text>
+          <Text style={styles.workoutText3}>Dynamic Warmup | 22 Minutes</Text>
+        </ImageBackground>
       </View>
 
-      {/* Trainers Container */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.trainersContainer}>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Richard.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Richard</Text>
-          </View>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Jennifier.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Jennifier</Text>
-          </View>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Brian.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Brian</Text>
-          </View>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Rebacca.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Rebacca</Text>
-          </View>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Emily.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Emily</Text>
-          </View>
-          <View style={styles.trainersCard}>
-            <Image
-              source={require('./assets/Images/Ronald.png')}
-              style={styles.trainersImg}
-            />
-            <Text style={styles.trainersName}>Ronald</Text>
-          </View>
-
-        </View>
-      </ScrollView>
-
-      <View style={styles.intros}>
-          <Text style={styles.heading1}>Diet Plans</Text>
-          <Text style={styles.heading2}>See All</Text>
+      <View style={{marginTop: 10}}>
+        <Text style={{color: '#fff', fontSize: 12, marginLeft: 15}}>
+          NEXT EXERCISE
+        </Text>
       </View>
 
-      {/* Diet plans container */}
-        <View style={styles.dietsSection}>
-          <View style={styles.dietsCard}>
-            <ImageBackground
-              source={require('./assets/Images/Oatmeal.png')}
-              style={styles.dietsImg}>
-              <Text style={styles.dietsText}>Oatmeal</Text>
-            </ImageBackground>
-          </View>
-
-          <View style={styles.dietsCard}>
-            <ImageBackground
-              source={require('./assets/Images/Waffles.png')}
-              style={styles.dietsImg}>
-              <Text style={styles.dietsText}>Waffles</Text>
-            </ImageBackground>
-          </View>
-        </View>
-
-        <View style={styles.dietsSection}>
-          <View style={styles.dietsCard}>
-            <ImageBackground
-              source={require('./assets/Images/Cornflakes.png')}
-              style={styles.dietsImg}>
-              <Text style={styles.dietsText}>Cornflakes</Text>
-            </ImageBackground>
-          </View>
-
-          <View style={styles.dietsCard}>
-            <ImageBackground
-              source={require('./assets/Images/Fruits-Salad.png')}
-              style={styles.dietsImg}>
-              <Text style={styles.dietsText}>Fruits Salad</Text>
-            </ImageBackground>
-          </View>
-        </View>
 
     </ScrollView>
   );
@@ -226,139 +69,95 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   intro: {
-    flexDirection: 'row',
-    padding: 20,
-    marginLeft: 5,
-    marginVertical: 10,
+    flexDirection: 'column',
+    marginLeft: 15,
+    marginTop: 10,
   },
   headingStyle: {
     color: '#fff',
     fontSize: 16,
   },
   textStyle: {
-    color: '#fff',
-    fontSize: 24,
+    color: '#959595',
+    fontSize: 12,
+    paddingTop: 2,
   },
   homeImg: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 50,
-    marginLeft: 85,
-    marginTop: 5,
+    marginLeft: 15,
+    marginTop: 25,
   },
-
-  planHead: {
-    color: '#fff',
-    fontSize: 16,
+  daySection: {
+    flexDirection: 'row',
+    backgroundColor: '#3A3A3C',
+    width: 189,
+    height: 33,
+    borderRadius: 50,
+    paddingLeft: 5,
+    marginTop: 13,
     marginLeft: 5,
-    paddingLeft: 20,
   },
-  plans: {
-    flexDirection: 'row',
-    marginRight: 15,
-    borderRadius: 50,
-
-  },
-
-  planImg: {
-    marginLeft: 20,
-    marginTop: 10,
-    width: 148,
-    height: 169,
+  day: {
+    backgroundColor: '#9B0808',
+    width: 50,
+    height: 27,
+    marginTop: 3,
     borderRadius: 50,
   },
-  plansText: {
+  dayText: {
     color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 120,
-  },
-  intros: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    paddingTop: 5
-  },
-
-  categories: {
-    flexDirection: 'row',
-    marginRight: 15
-  },
-
-  heading1: {
-    color: '#fff',
-    fontSize: 16,
-    paddingTop: 10,
-    marginLeft: 8,
-    paddingLeft: 15,
-  },
-  heading2: {
-    color: '#fff',
-    fontSize: 16,
-    paddingTop: 10,
-    marginRight: 8,
-    paddingRight: 15
-  },
-
-  categoriesImg: {
-    marginLeft: 20,
-    marginTop: 10,
-    width: 77,
-    height: 104,
-    borderRadius: 50,
-  },
-  categoriesText: {
-    color: '#fff',
+    paddingTop: 3,
+    fontWeight: 'bold',
     fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingTop: 70,
   },
-
-  trainersContainer: {
-    flexDirection: 'row',
-    paddingTop: 10,
-    marginRight: 15
-  },
-  trainersCard: {
+  textSection: {
+    fontSize: 14,
     paddingTop: 5,
-  },
-  trainersImg: {
-    marginLeft: 23,
-    width: 55,
-    height: 55,
-  },
-
-  trainersName: {
+    paddingLeft: 10,
     color: '#fff',
-    fontSize: 11,
-    paddingTop: 8,
-    textAlign: 'center',
-    marginLeft: 23,
   },
-
-  dietsSection: {
-    flexDirection: 'row',
-    marginBottom: 5
+  horizontalLine: {
+    borderBottomColor: '#fff',
+    borderBottomWidth: 0.5,
+    marginLeft: '28%',
   },
-  dietsCard: {
-    marginLeft: 20,
-    marginTop: 15,
-  },
-
-  dietsImg: {
-    width: 170,
-    height: 225,
+  workoutImg: {
+    marginLeft: 10,
+    marginTop: 10,
+    width: 375,
+    height: 220,
     borderRadius: 50,
   },
-  dietsText: {
+  workoutText1: {
+    paddingLeft: 20,
+    paddingTop: '27%',
     color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingTop: 170,
+    fontSize: 24,
+    fontWeight: 'bold'
   },
+  workoutText2: {
+    backgroundColor: '#9B0808',
+    width: 130,
+    height: 29,
+    marginLeft: 20,
+    textAlign: 'center',
+    borderRadius: 50,
+    marginVertical: 3
+  },
+  workoutText: {
+    color: '#fff',
+    textAlign: 'center',
+    paddingTop: 3,
+    fontSize: 16,
+  },
+  workoutText3: {
+    color: '#fff',
+    paddingLeft: 20,
+    fontSize: 14,
+  }
 });
 
 export default Workout;
