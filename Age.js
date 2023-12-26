@@ -3,10 +3,12 @@ import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'r
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const AgeScreen = () => {
   const [age, setAge] = useState(25);
-  const [height, setHeight] = useState(160); // Set a default height value
+  const [height, setHeight] = useState(160);
+  const [profileImage, setProfileImage] = useState(require('./assets/Images/default-img.jpg'));
 
   const increaseAge = () => {
     setAge((prevAge) => (prevAge < 99 ? prevAge + 1 : prevAge));
@@ -22,6 +24,25 @@ const AgeScreen = () => {
 
   const decreaseHeight = () => {
     setHeight((prevHeight) => (prevHeight > 0 ? prevHeight - 1 : prevHeight));
+  };
+
+  const pickImage = async () => {
+    try {
+      const response = await ImagePicker.openPicker({
+        width: 300,
+        height: 300,
+        cropping: true,
+        cropperCircleOverlay: true,
+        cropperCancelText: 'Cancel',
+        cropperChooseText: 'Choose',
+      });
+
+      if (response && !response.didCancel) {
+        setProfileImage({ uri: response.path });
+      }
+    } catch (error) {
+      console.error('Error picking image:', error);
+    }
   };
 
   const onNextPress = () => {
@@ -75,8 +96,10 @@ const AgeScreen = () => {
           </View>
         </View>
         <View style={styles.PimageView}>
-          {/* <Image source={require('../assets/Imag.jpg')} style={styles.image} /> */}
-          <Text style={styles.userName}> Upload your professional image </Text>
+          <TouchableOpacity onPress={pickImage}>
+            <Image source={profileImage} style={styles.image} />
+          </TouchableOpacity>
+          <Text style={styles.userName}>Upload your professional image</Text>
         </View>
       </View>
       <View style={styles.footer}>
@@ -169,14 +192,13 @@ const styles = StyleSheet.create({
     marginTop: -20,
   },
   PimageView: {
-    margintop: 50,
+    marginTop: 50,
     marginBottom: 10,
+    alignItems: 'center',
   },
   image: {
-    marginTop: 40,
     width: 100,
     height: 100,
-    alignSelf: 'center',
     borderRadius: 60,
     borderWidth: 2,
   },
