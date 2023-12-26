@@ -8,14 +8,16 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import AntIcon from 'react-native-vector-icons/AntDesign'; // Import AntDesign from react-native-vector-icons
 
 const ReviewScreen = () => {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
 
-  const onRatingChange = value => {
-    setRating(value);
+  const onRatingChange = text => {
+    const parsedRating = parseFloat(text);
+    if (!isNaN(parsedRating) && parsedRating >= 0 && parsedRating <= 5) {
+      setRating(text);
+    }
   };
 
   const onReviewChange = text => {
@@ -23,35 +25,38 @@ const ReviewScreen = () => {
   };
 
   const onSendPress = () => {
-    // Handle the send button press here
     console.log('Send button pressed');
-    // Add your logic here to send the review or perform any other action
+    console.log('Entered Rating:', rating);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.head}>
         <View style={styles.header}>
-          <AntIcon name="leftcircle" size={24} color="white" />{' '}
-          {/* Use AntIcon instead of AntDesign */}
-          {/* <Text style={styles.heading}>Write a Review</Text> */}
-          {/* Add an empty view for space */}
+          <Text style={styles.heading}>Write a Review</Text>
           <View style={{width: 24}}></View>
         </View>
 
         <View style={styles.barContainer}>
-          {/* <View style={styles.ratingLabelContainer}>
-            <Text style={styles.numberText}>{rating.toFixed(1)}</Text>
-          </View> */}
-          {/* <View style={styles.barImage}>
-            <Text style={styles.ratingText}> Rating </Text>
-            
-          </View> */}
+          <View style={styles.ratingLabelContainer}>
+            <Text style={styles.numberText}>{rating}</Text>
+          </View>
+          <View style={styles.barImage}>
+            <TextInput
+              style={styles.ratingInput}
+              placeholder="Rating (1.0 - 5.0)"
+              placeholderTextColor="white"
+              keyboardType="numeric"
+              value={rating}
+              onChangeText={onRatingChange}
+              backgroundColor="rgba(217, 217, 217, 0.15)"
+            />
+          </View>
         </View>
         <View style={styles.reviewView}>
           <TextInput
             style={styles.reviewInput}
-            placeholder="Review (Optional)"
+            placeholder="Review Message "
             placeholderTextColor="white"
             multiline={true}
             value={review}
@@ -59,7 +64,7 @@ const ReviewScreen = () => {
           />
         </View>
         <TouchableOpacity style={styles.sendButton} onPress={onSendPress}>
-          {/* <Text style={styles.sendButtonText}>Send</Text> */}
+          <Text style={styles.sendButtonText}>Send</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -106,16 +111,29 @@ const styles = StyleSheet.create({
   barImage: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
   },
   ratingText: {
     color: 'white',
+    marginRight: 10,
+  },
+  ratingInput: {
+    width: '100%',
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: 'rgba(217, 217, 217, 0.15)',
+    opacity: 15,
+    color: 'white',
+    textAlignVertical: 'top',
+    textAlign: 'left',
   },
   reviewView: {
     marginTop: 20,
   },
   reviewInput: {
     width: '100%',
-    padding: 10,
+    padding: 15,
     height: 250,
     borderRadius: 10,
     backgroundColor: 'rgba(217, 217, 217, 0.15)',
