@@ -17,5 +17,5 @@ import AdvanceScreen from './Advance';
 import {name as appName} from './app.json';
 
 
-AppRegistry.registerComponent(appName, () => AgeScreen);
+AppRegistry.registerComponent(appName, () => BasicScreen);
 

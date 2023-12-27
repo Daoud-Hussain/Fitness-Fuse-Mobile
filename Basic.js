@@ -1,15 +1,9 @@
-import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Pressable,
-  ScrollView,
-} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, Pressable, ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const BasicScreen = ({navigation}) => {
+const BasicScreen = ({ navigation }) => {
   const [ageInput, setAgeValue] = useState('');
   const [weightInput, setWeightValue] = useState('');
   const [heightInput, setHeightValue] = useState('');
@@ -17,34 +11,41 @@ const BasicScreen = ({navigation}) => {
   const [selectedGender, setSelectedGender] = useState('male');
   const [selectedDietType, setSelectedDietType] = useState('vegetarian');
 
-  const handleSave = async () => {
-    const gpt35ApiUrl = 'https://api.openai.com/v1/completions';
-    const prompt = `Gender: ${selectedGender}, Age: ${ageInput}, Height: ${heightInput}, Weight: ${weightInput}, Diet Type: ${selectedDietType}, Weight Goal: ${goalInput}, this is information of person , now based on this define a weekly diet plan , properly formatted.`;
+  useEffect(() => {
+    // Load data from AsyncStorage on component mount
+    loadData();
+  }, []);
 
+  const loadData = async () => {
     try {
-      const response = await fetch(gpt35ApiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization:
-            'Bearer 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',
-        },
-        body: JSON.stringify({
-          prompt: prompt,
-          model: 'text-davinci-003',
-          temperature: 0.7,
-          max_tokens: 150,
-        }),
-      });
+      const storedAge = await AsyncStorage.getItem('age');
+      const storedWeight = await AsyncStorage.getItem('weight');
+      const storedHeight = await AsyncStorage.getItem('height');
+      const storedGender = await AsyncStorage.getItem('gender');
+      const storedDietType = await AsyncStorage.getItem('dietType');
 
-      if (!response.ok) {
-        throw new Error(`GPT-3.5 API request failed: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('GPT-3.5 Response:', data.choices[0].text);
+      if (storedAge) setAgeValue(storedAge);
+      if (storedWeight) setWeightValue(storedWeight);
+      if (storedHeight) setHeightValue(storedHeight);
+      if (storedGender) setSelectedGender(storedGender);
+      if (storedDietType) setSelectedDietType(storedDietType);
     } catch (error) {
-      console.error('Error calling GPT-3.5 API:', error.message);
+      console.error('Error loading data from AsyncStorage:', error);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      // Save data to AsyncStorage
+      await AsyncStorage.setItem('age', ageInput);
+      await AsyncStorage.setItem('weight', weightInput);
+      await AsyncStorage.setItem('height', heightInput);
+      await AsyncStorage.setItem('gender', selectedGender);
+      await AsyncStorage.setItem('dietType', selectedDietType);
+
+      // Rest of your code for handling GPT-3.5 API request
+    } catch (error) {
+      console.error('Error saving data to AsyncStorage:', error);
     }
   };
 
@@ -58,12 +59,10 @@ const BasicScreen = ({navigation}) => {
               <Picker
                 selectedValue={selectedGender}
                 style={styles.picker}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedGender(itemValue)
-                }
+                onValueChange={(itemValue) => setSelectedGender(itemValue)}
                 dropdownIconColor="black"
                 dropdownIconRippleColor="black">
-                <Picker.Item label="Male" value="male"  />
+                <Picker.Item label="Male" value="male" />
                 <Picker.Item label="Female" value="female" />
               </Picker>
             </View>
@@ -72,56 +71,56 @@ const BasicScreen = ({navigation}) => {
               <TextInput
                 style={styles.input1}
                 value={ageInput}
-                onChangeText={text => setAgeValue(text)}
+                onChangeText={(text) => setAgeValue(text)}
                 keyboardType="numeric"
               />
             </View>
           </View>
           <View style={styles.sec}>
-            <View style={styles.group}>
+            <View style={styles.height}>
               <Text style={styles.label}>Height </Text>
               <TextInput
                 style={styles.input2}
                 value={heightInput}
-                onChangeText={text => setHeightValue(text)}
+                onChangeText={(text) => setHeightValue(text)}
                 keyboardType="numeric"
               />
             </View>
             <View style={styles.group2}>
               <Text style={styles.label}>Weight </Text>
               <TextInput
-                style={styles.input2}
+                style={styles.input3}
                 value={weightInput}
-                onChangeText={text => setWeightValue(text)}
+                onChangeText={(text) => setWeightValue(text)}
                 keyboardType="numeric"
               />
             </View>
           </View>
 
-          <View style={styles.group}>
+          <View style={styles.diet}>
             <Text style={styles.label}>Diet Type</Text>
             <Picker
               selectedValue={selectedDietType}
               style={styles.picker}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedDietType(itemValue)
-              }>
+              onValueChange={(itemValue) => setSelectedDietType(itemValue)}>
               <Picker.Item label="Vegetarian" value="vegetarian" />
               <Picker.Item label="Vegan" value="vegan" />
               <Picker.Item label="Keto" value="keto" />
             </Picker>
           </View>
-          <View style={styles.group}>
+          <View style={styles.weightGoal}>
             <Text style={styles.label}>Weight Goal </Text>
             <TextInput
               style={styles.input}
               value={goalInput}
-              onChangeText={text => setGoalValue(text)}
+              onChangeText={(text) => setGoalValue(text)}
             />
           </View>
-          <Pressable style={styles.saveButton} onPress={handleSave}>
-            <Text style={{color: 'white'}}>Save</Text>
-          </Pressable>
+
+          <Pressable style={styles.bookButton} onPress={handleSave}>
+            <Text style={styles.buttonText}>Book an Appointment</Text>
+        </Pressable>
+
         </View>
       </View>
     </ScrollView>
@@ -144,19 +143,31 @@ const styles = StyleSheet.create({
   },
   group: {
     marginBottom: 16,
+    width: '70%',
+    // marginTop: 25
+  },
+  diet: {
+    marginBottom: 16,
+    width: '130%',
+    marginTop: 20
+  },
+  weightGoal: {
+    marginBottom: 16,
+    width: '130%',
+    marginTop: 10
   },
   group1: {
     marginLeft: 30,
   },
-  group2:{
-    marginLeft:20,
+  group2: {
+    marginLeft: 30,
   },
   first1: {
     flexDirection: 'row',
   },
-  sec:{
-    flexDirection:'row',
-    marginTop:10,
+  sec: {
+    flexDirection: 'row',
+    marginTop: 10,
   },
   label: {
     color: 'white',
@@ -164,30 +175,51 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   label1: {
-    color: 'white',
+    color: '#fff',
     fontSize: 18,
     marginBottom: 8,
   },
   input: {
     height: 40,
     width: 260,
-    borderColor: 'gray',
+    borderColor: '#fff',
     borderWidth: 1,
     padding: 4,
+    color: '#fff',
+    width: '100%',
+    paddingLeft: 15
+
+  },
+  height: {
+    width: '70%',
   },
   input1: {
     height: 40,
-    width: 170,
-    borderColor: 'gray',
+    borderColor: '#fff',
     borderWidth: 1,
     padding: 4,
+    color: '#fff',
+    width: 125,
+    paddingLeft: 15
   },
   input2: {
     height: 40,
-    width: 116,
-    borderColor: 'gray',
+    borderColor: '#fff',
     borderWidth: 1,
     padding: 4,
+    color: '#fff',
+    paddingLeft: 15
+
+  },
+  input3: {
+    height: 40,
+    borderColor: '#fff',
+    borderWidth: 1,
+    padding: 4,
+    color: '#fff',
+    width: 125,
+    paddingLeft: 15
+
   },
   picker: {
     height: 40,
@@ -196,13 +228,23 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom: 8,
   },
-  saveButton: {
-    backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 16,
+  bookButton: {
+    backgroundColor: '#9B0808',
+    color: 'white',
+    width: '130%',
+    height: 61,
+    borderRadius: 15,
+    alignSelf :'center',
+    marginTop: 27,
+    marginLeft: 75
   },
+  buttonText: {
+    color: '#fff', 
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+    paddingTop: 18
+  }
 });
 
 export default BasicScreen;
