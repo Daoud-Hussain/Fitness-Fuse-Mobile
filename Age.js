@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,6 +10,37 @@ const AgeScreen = () => {
   const [age, setAge] = useState(25);
   const [height, setHeight] = useState(160);
   const [profileImage, setProfileImage] = useState(require('./assets/Images/default-img.jpg'));
+
+  useEffect(() => {
+    // Load data from AsyncStorage on component mount
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    try {
+      const storedAge = await AsyncStorage.getItem('age');
+      const storedHeight = await AsyncStorage.getItem('height');
+      const storedImage = await AsyncStorage.getItem('profileImage');
+
+      if (storedAge) setAge(parseInt(storedAge, 10));
+      if (storedHeight) setHeight(parseInt(storedHeight, 10));
+      if (storedImage) setProfileImage({ uri: storedImage });
+    } catch (error) {
+      console.error('Error loading data from AsyncStorage:', error);
+    }
+  };
+
+  const saveData = async () => {
+    try {
+      await AsyncStorage.setItem('age', age.toString());
+      await AsyncStorage.setItem('height', height.toString());
+      if (profileImage.uri) {
+        await AsyncStorage.setItem('profileImage', profileImage.uri);
+      }
+    } catch (error) {
+      console.error('Error saving data to AsyncStorage:', error);
+    }
+  };
 
   const increaseAge = () => {
     setAge((prevAge) => (prevAge < 99 ? prevAge + 1 : prevAge));
@@ -45,7 +77,10 @@ const AgeScreen = () => {
     }
   };
 
-  const onNextPress = () => {
+  const onNextPress = async () => {
+    // Save data to AsyncStorage before navigating to the next screen
+    await saveData();
+
     // Handle the "Next" button press
     console.log('Next button pressed');
     // Add your logic here to navigate to the next screen or perform any other action

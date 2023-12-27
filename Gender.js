@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -8,15 +8,52 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const GenderScreen = () => {
-  const [weight, setWeight] = useState(75); 
+  const [gender, setGender] = useState('');
+  const [weight, setWeight] = useState(75);
 
-  const onPress = () => {
-    console.log('Button pressed!');
+  useEffect(() => {
+    // Load stored values from AsyncStorage on component mount
+    loadStoredValues();
+  }, []);
+
+  const loadStoredValues = async () => {
+    try {
+      const storedGender = await AsyncStorage.getItem('gender');
+      const storedWeight = await AsyncStorage.getItem('weight');
+
+      if (storedGender) {
+        setGender(storedGender);
+      }
+
+      if (storedWeight) {
+        setWeight(parseInt(storedWeight, 10));
+      }
+    } catch (error) {
+      console.error('Error loading data from AsyncStorage:', error);
+    }
+  };
+
+  const saveDataToStorage = async () => {
+    try {
+      await AsyncStorage.setItem('gender', gender);
+      await AsyncStorage.setItem('weight', weight.toString());
+    } catch (error) {
+      console.error('Error saving data to AsyncStorage:', error);
+    }
+  };
+
+  const onPress = (selectedGender) => {
+    setGender(selectedGender);
   };
 
   const onNextPress = () => {
+    // Save data to AsyncStorage when Next button is pressed
+    saveDataToStorage();
+
+    // Continue with other logic as needed
     console.log('Next button pressed!');
   };
 
@@ -39,16 +76,16 @@ const GenderScreen = () => {
 
       <View style={styles.content}>
         <Text style={styles.text}>Choose your gender</Text>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress('male')}>
           <View style={styles.buttonContainer}>
-          <Icon name="man" size={24} color="white" />
+            <Icon name="man" size={24} color="white" />
             <Text style={styles.btext}> Man </Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress('female')}>
           <View style={styles.buttonContainer}>
-          <Icon name="woman" size={24} color="white" />
+            <Icon name="woman" size={24} color="white" />
             <Text style={styles.btext}> Woman </Text>
           </View>
         </TouchableOpacity>
@@ -57,7 +94,10 @@ const GenderScreen = () => {
           <View style={styles.BarContainer}>
             <View style={styles.weightLabelContainer}>
               <View style={styles.barimage}>
-                <Image source={require('./assets/Images/Vector.png')} style={styles.image} />
+                <Image
+                  source={require('./assets/Images/Vector.png')}
+                  style={styles.image}
+                />
               </View>
               <View style={styles.weightkg}>
                 <Text style={styles.numberText}>{weight}</Text>
@@ -65,20 +105,32 @@ const GenderScreen = () => {
               </View>
               <View style={styles.tbButtons}>
                 <TouchableOpacity onPress={increaseWeight}>
-                  <Icon name="caretup" size={24} color="rgba(155, 8, 8, 1)" />
+                  <Icon
+                    name="caretup"
+                    size={24}
+                    color="rgba(155, 8, 8, 1)"
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={decreaseWeight}>
-                  <Icon name="caretdown" size={24} color="rgba(255, 255, 255, 0.15)" />
+                  <Icon
+                    name="caretdown"
+                    size={24}
+                    color="rgba(255, 255, 255, 0.15)"
+                  />
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </View>
-
-        </View>
+      </View>
 
       <View
-        style={{height: 200, width: 320, marginTop: 0, alignItems: 'flex-end'}}>
+        style={{
+          height: 200,
+          width: 320,
+          marginTop: 0,
+          alignItems: 'flex-end',
+        }}>
         <TouchableOpacity
           onPress={onNextPress}
           style={styles.nextButtonContainer}>

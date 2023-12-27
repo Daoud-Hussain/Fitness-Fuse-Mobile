@@ -11,9 +11,11 @@ import AgeScreen from './Age';
 // import ReviewScreen from './Review';
 import GenderScreen from './Gender';
 import ReviewScreen from './Review';
+import BasicScreen from './Basic';
+import AdvanceScreen from './Advance';
 
 import {name as appName} from './app.json';
 
 
-AppRegistry.registerComponent(appName, () => ReviewScreen);
+AppRegistry.registerComponent(appName, () => AgeScreen);
 
