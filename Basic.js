@@ -106,6 +106,7 @@ const BasicScreen = ({ navigation }) => {
               <Picker.Item label="Vegetarian" value="vegetarian" />
               <Picker.Item label="Vegan" value="vegan" />
               <Picker.Item label="Keto" value="keto" />
+              <Picker.Item label="Non-Vegetarian" value="non-vegetarian" />
             </Picker>
           </View>
           <View style={styles.weightGoal}>
@@ -118,7 +119,7 @@ const BasicScreen = ({ navigation }) => {
           </View>
 
           <Pressable style={styles.bookButton} onPress={handleSave}>
-            <Text style={styles.buttonText}>Book an Appointment</Text>
+            <Text style={styles.buttonText}>Check Diet Plan</Text>
         </Pressable>
 
         </View>
@@ -242,8 +243,8 @@ const styles = StyleSheet.create({
     color: '#fff', 
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 18,
-    paddingTop: 18
+    fontSize: 22,
+    paddingTop: 15
   }
 });
 
