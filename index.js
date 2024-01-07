@@ -8,7 +8,6 @@ import Trainers from './Trainers';
 import TrainersDetails from './TrainersDetails';
 import Workout from './Workout';
 import AgeScreen from './Age';
-// import ReviewScreen from './Review';
 import GenderScreen from './Gender';
 import ReviewScreen from './Review';
 import BasicScreen from './Basic';

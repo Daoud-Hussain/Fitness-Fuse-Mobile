@@ -43,7 +43,6 @@ const BasicScreen = ({ navigation }) => {
       await AsyncStorage.setItem('gender', selectedGender);
       await AsyncStorage.setItem('dietType', selectedDietType);
 
-      // Rest of your code for handling GPT-3.5 API request
     } catch (error) {
       console.error('Error saving data to AsyncStorage:', error);
     }
@@ -225,7 +224,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 40,
     borderWidth: 1,
-    color: 'black', // Set the text color to white
+    color: 'black', 
     backgroundColor: 'white',
     marginBottom: 8,
   },

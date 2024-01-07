@@ -81,9 +81,7 @@ const AgeScreen = () => {
     // Save data to AsyncStorage before navigating to the next screen
     await saveData();
 
-    // Handle the "Next" button press
     console.log('Next button pressed');
-    // Add your logic here to navigate to the next screen or perform any other action
   };
 
   return (

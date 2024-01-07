@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   intro: {
-    // minHeight: '85%',
     marginBottom: 10,
   },
   introText: {
